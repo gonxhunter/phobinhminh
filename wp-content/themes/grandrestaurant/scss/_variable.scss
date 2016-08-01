@@ -1,0 +1,25 @@
+/* Background */
+
+
+/* Border */
+
+
+/* Break point */
+$desktop: 1200px;
+$laptop: 992px;
+$tablet: 768px;
+$mobile: 480px;
+
+/* Color */
+$black: #000000;
+$white: #ffffff;
+
+/* Font */
+@include placeholder('font-style') {
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* Layout */
+
+
