@@ -24,7 +24,7 @@ foreach ($categories_arr as $cat) {
 }
 
 //Get all menu categories
-$menu_cats_arr = get_terms('menucats', 'hide_empty=0&hierarchical=0&parent=0&orderby=menu_order');
+$menu_cats_arr = get_terms('product_cat', 'hide_empty=0&hierarchical=0&parent=0&orderby=menu_order');
 $menu_cats_select = array();
 $menu_cats_select[''] = '';
 

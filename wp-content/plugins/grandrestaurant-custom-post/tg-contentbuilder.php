@@ -599,14 +599,14 @@ function ppb_menu_with_image_func($atts, $content) {
 	    'numberposts' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
-	    'post_type' => array('menus'),
+	    'post_type' => 'product',
 	);
 	
 	if(!empty($cat))
 	{
-		$args['menucats'] = $cat;
+		$args['category'] = $cat;
 	}
-	$menu_arr = get_posts($args);
+	$menu_arr = new WP_Query( $args );
 	
 	$sec_id = '';
 	if(!empty($slug))
@@ -647,43 +647,24 @@ function ppb_menu_with_image_func($atts, $content) {
 		    }
 		    $return_html.= '>'.urldecode($title).'</h2>';
 		}
-		
+
 		//Display food menus items
-		if(!empty($menu_arr) && is_array($menu_arr))
+		if($menu_arr->have_posts())
 		{
-			foreach($menu_arr as $key => $menu_item)
-			{
-				$menu_ID = $menu_item->ID;
-				$menu_price = get_post_meta($menu_ID, 'menu_price');
-				$menu_price_currency = get_post_meta($menu_ID, 'menu_price_currency');
-				if(!isset($menu_price_currency[0]))
-				{
-					$menu_price_currency[0] = '$';
-				}
-				$menu_highlight = get_post_meta($menu_ID, 'menu_highlight');
-			
+			while ( $menu_arr->have_posts() ) : $menu_arr->the_post();
+				global $product;
 				$return_html.= '
-					<div id="menu_'.esc_attr($menu_ID).'" class="menu_content_classic">
+					<div id="menu_'.esc_attr(get_the_ID()).'" class="menu_content_classic">
+					<a href="'.get_permalink().'">
 		            <h5 class="menu_post">
-		            	<span class="menu_title" style="background:'.esc_attr($bgcolor).';">'.$menu_item->post_title.'</span>
+		            	<span class="menu_title" style="background:'.esc_attr($bgcolor).';">'.get_the_title().'</span>
 		            	<span class="menu_dots"></span>';
-		            	
-		        if(isset($menu_price[0]))
-		        {
-		        	$return_html.= '
-		            	<span class="menu_price" style="background:'.esc_attr($bgcolor).';">'.$menu_price_currency[0].$menu_price[0].'</span>';
-		        }
-		            	
-		        $return_html.= '</h5>
-		            <div class="post_detail menu_excerpt">'.$menu_item->post_excerpt.'</div>';
-		            
-		        if(!empty($menu_highlight))
-		        {
-                    $return_html.= '<div class="menu_highlight"><i class="fa fa-star"></i></div>';
-                }
-                    $return_html.= '</div>
+				$return_html.= '
+		            	<span class="menu_price" style="background:'.esc_attr($bgcolor).';">'.$product->get_price_html().'</span>';
+				$return_html.= '</a></div>
 				';
-			}
+			endwhile;
+			wp_reset_query();
 		}
 		$return_html.= '</div>';
 	}
@@ -701,44 +682,26 @@ function ppb_menu_with_image_func($atts, $content) {
 		    }
 		    $return_html.= '>'.urldecode($title).'</h2>';
 		}
-		
+
 		//Display food menus items
-		if(!empty($menu_arr) && is_array($menu_arr))
+		if($menu_arr->have_posts())
 		{
-			foreach($menu_arr as $key => $menu_item)
-			{
-				$menu_ID = $menu_item->ID;
-				$menu_price = get_post_meta($menu_ID, 'menu_price');
-				$menu_price_currency = get_post_meta($menu_ID, 'menu_price_currency');
-				if(!isset($menu_price_currency[0]))
-				{
-					$menu_price_currency[0] = '$';
-				}
-				$menu_highlight = get_post_meta($menu_ID, 'menu_highlight');
-			
+			while ( $menu_arr->have_posts() ) : $menu_arr->the_post();
+				global $product;
 				$return_html.= '
-					<div id="menu_'.esc_attr($menu_ID).'" class="menu_content_classic">
+					<div id="menu_'.esc_attr(get_the_ID()).'" class="menu_content_classic">
+					<a href="'.get_permalink().'">
 		            <h5 class="menu_post">
-		            	<span class="menu_title" style="background:'.esc_attr($bgcolor).';">'.$menu_item->post_title.'</span>
+		            	<span class="menu_title" style="background:'.esc_attr($bgcolor).';">'.get_the_title().'</span>
 		            	<span class="menu_dots"></span>';
-		            	
-		        if(isset($menu_price[0]))
-		        {
-		        	$return_html.= '
-		            	<span class="menu_price" style="background:'.esc_attr($bgcolor).';">'.$menu_price_currency[0].$menu_price[0].'</span>';
-		        }
-		            	
-		        $return_html.= '</h5>
-		            <div class="post_detail menu_excerpt">'.$menu_item->post_excerpt.'</div>';
-		            
-		        if(!empty($menu_highlight))
-		        {
-                    $return_html.= '<div class="menu_highlight"><i class="fa fa-star"></i></div>';
-                }
-                    $return_html.= '</div>
+				$return_html.= '
+		            	<span class="menu_price" style="background:'.esc_attr($bgcolor).';">'.$product->get_price_html().'</span>';
+				$return_html.= '</a></div>
 				';
-			}
+			endwhile;
+			wp_reset_query();
 		}
+
 		$return_html.= '</div>';
 		
 		$return_html.= '<div class="one_half parallax_scroll_image last" style="width:'.$image_width.'%;">';
@@ -845,14 +808,14 @@ function ppb_menu_with_image_fullwidthe_func($atts, $content) {
 	    'numberposts' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
-	    'post_type' => array('menus'),
+	    'post_type' => 'product',
 	);
 	
 	if(!empty($cat))
 	{
-		$args['menucats'] = $cat;
+		$args['category'] = $cat;
 	}
-	$menu_arr = get_posts($args);
+	$menu_arr = new WP_Query( $args );
 	
 	//Display content
 	$return_html.= '<div class="one">';
@@ -877,62 +840,32 @@ function ppb_menu_with_image_fullwidthe_func($atts, $content) {
 	}
 	
 	//Display food menus items
-	if(!empty($menu_arr) && is_array($menu_arr))
+	if($menu_arr->have_posts())
 	{
-	    foreach($menu_arr as $key => $menu_item)
-	    {
-	    	$menu_ID = $menu_item->ID;
-	    	$menu_price = get_post_meta($menu_ID, 'menu_price');
-	    	$menu_price_currency = get_post_meta($menu_ID, 'menu_price_currency');
-	    	if(!isset($menu_price_currency[0]))
-	    	{
-	    		$menu_price_currency[0] = '$';
-	    	}
-	    	$menu_highlight = get_post_meta($menu_ID, 'menu_highlight');
-	    
-	    	$return_html.= '
-	    		<div id="menu_'.esc_attr($menu_ID).'" class="menu_content_classic">
+		while ( $menu_arr->have_posts() ) : $menu_arr->the_post();
+			global $product;
+			$return_html.= '
+	    		<div id="menu_'.esc_attr(get_the_ID()).'" class="menu_content_classic">
 	            <h5 class="menu_post">
 	            	<span class="menu_title" style="background:'.esc_attr($bgcolor).';';
-	            	
 			if(!empty($fontcolor))
-		    {
-		    	$return_html.= 'color:'.esc_attr($fontcolor).';';
-		    }
-	            	
-	        $return_html.= '">'.$menu_item->post_title.'</span>
+			{
+				$return_html.= 'color:'.esc_attr($fontcolor).';';
+			}
+
+			$return_html.= '">'.get_the_title().'</span>
 	            	<span class="menu_dots" style="background:'.esc_attr($bgcolor).';';
-	            	
-	        $return_html.= '"></span>
+
+			$return_html.= '"></span>
 	            	<span class="menu_price" style="background:'.esc_attr($bgcolor).';';
-	            	
-	        if(!empty($fontcolor))
-		    {
-		    	$return_html.= 'color:'.esc_attr($fontcolor).';';
-		    }
-	            	
-	        if(isset($menu_price[0]))
-	        {
-	        	$return_html.= '">'.$menu_price_currency[0].$menu_price[0].'</span>';
-	        }
-	            
-	        $return_html.= '</h5>
-	            <div class="post_detail menu_excerpt"';
-	            
-	        if(!empty($fontcolor))
-		    {
-		    	$return_html.= 'style="color:'.esc_attr($fontcolor).';"';
-		    }    
-	        
-	        $return_html.= '>'.$menu_item->post_excerpt.'</div>';
-	            
-	        if(!empty($menu_highlight))
-	        {
-                $return_html.= '<div class="menu_highlight"><i class="fa fa-star"></i></div>';
-            }
-                $return_html.= '</div>
-	    	';
-	    }
+
+			if(!empty($fontcolor))
+			{
+				$return_html.= 'color:'.esc_attr($fontcolor).';';
+			}
+			$return_html.= '">'.$product->get_price_html().'</span>';
+		endwhile;
+		wp_reset_query();
 	}
 	
 	$return_html.= '</div>';
@@ -972,15 +905,15 @@ function ppb_menu_classic_func($atts, $content) {
 	    'numberposts' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
-	    'post_type' => array('menus'),
+	    'post_type' => 'product',
 	);
 	
 	if(!empty($cat))
 	{
-		$args['menucats'] = $cat;
+		$args['category'] = $cat;
 	}
-	$menu_arr = get_posts($args);
-	
+	$menu_arr = new WP_Query( $args );
+
 	$sec_id = '';
 	if(!empty($slug))
 	{
@@ -1001,7 +934,7 @@ function ppb_menu_classic_func($atts, $content) {
 	{
 		$return_html.= '<div style="margin:auto;width:'.esc_attr(urldecode($width)).';text-align:center;">';
 	}
-	
+
 	//Display Title
 	if(!empty($title))
 	{
@@ -1024,69 +957,108 @@ function ppb_menu_classic_func($atts, $content) {
 		$wrapper_class = "one_third";
 		break;
 	}
-	
+
 	//Display food menus items
-	if(!empty($menu_arr) && is_array($menu_arr))
+	if($menu_arr->have_posts())
 	{
-	    foreach($menu_arr as $key => $menu_item)
-	    {
-	    	$item_index = $key+1;
-	    	$last_class = '';
-	    	if($columns > 1 && ($item_index%$columns) == 0)
-	    	{
-		    	$last_class = 'last';
-	    	}
-	    
-			$return_html.= '<div class="'.$wrapper_class.' '.$last_class.'">';
-			
-			//Display Food Menu
-			$menu_ID = $menu_item->ID;
-			$menu_price = get_post_meta($menu_ID, 'menu_price');
-			$menu_price_currency = get_post_meta($menu_ID, 'menu_price_currency');
-			if(!isset($menu_price_currency[0]))
+		$key = 0;
+		while ( $menu_arr->have_posts() ) : $menu_arr->the_post();
+			global $product;
+			$item_index = $key+1;
+			$last_class = '';
+			if($columns > 1 && ($item_index%$columns) == 0)
 			{
-			    $menu_price_currency[0] = '$';
+				$last_class = 'last';
 			}
-			$menu_highlight = get_post_meta($menu_ID, 'menu_highlight');
+
+			$return_html.= '<div class="'.$wrapper_class.' '.$last_class.'">';
 			$menu_dots_class = 'menu_dots';
-			
 			$return_html.= '
-			    <div id="menu_'.esc_attr($menu_ID).'" class="menu_content_classic">';
-			    
-			if(!empty($menu_image) && has_post_thumbnail($menu_item->ID, 'thumbnail'))
+			    <div id="menu_'.esc_attr(get_the_ID()).'" class="menu_content_classic">';
+			if(!empty($menu_image) && has_post_thumbnail(get_the_ID(), 'thumbnail'))
 			{
-			    $image_id = get_post_thumbnail_id($menu_item->ID);
+			    $image_id = get_post_thumbnail_id(get_the_ID());
 			    $image_thumb = wp_get_attachment_image_src($image_id, 'thumbnail', true);
 			    $image_full = wp_get_attachment_image_src($image_id, 'original', true);
-			    
+
 			    if(isset($image_thumb[0]) && !empty($image_thumb[0]))
 			    {
 			    	$return_html.= '<div class="menu_image"><a href="'.$image_full[0].'" class="img_frame"><img src="'.$image_thumb[0].'" alt=""/></a></div>';
 			    	$menu_dots_class.= ' image';
 			    }
 			}
-			    
-		    $return_html.= '<h5 class="menu_post">
-		        	<span class="menu_title">'.$menu_item->post_title.'</span>
+			$return_html .= '<a href="'.get_permalink().'">';
+			$return_html.= '<h5 class="menu_post">
+		        	<span class="menu_title">'.get_the_title().'</span>
 		        	<span class="'.$menu_dots_class.'"></span>';
-		    
-		    if(isset($menu_price[0]))
-		    {
-		        	$return_html.= '<span class="menu_price">'.$menu_price_currency[0].$menu_price[0].'</span>';
-		    }
-		        
-		    $return_html.= '</h5>
-		        <div class="post_detail menu_excerpt">'.$menu_item->post_excerpt.'</div>';
-		        
-		    if(!empty($menu_highlight))
-		    {
-                $return_html.= '<div class="menu_highlight"><i class="fa fa-star"></i></div>';
-            }
-                $return_html.= '</div>
+			$return_html.= '<span class="menu_price">'.$product->get_price_html().'</span>';
+			$return_html.= '</a>';
+			$return_html.= '</div>
 			';
-			
+
 			$return_html.= '</div>';
-		}
+		endwhile;
+		wp_reset_query();
+//		foreach($menu_arr as $key => $menu_item)
+//	    {
+//	    	$item_index = $key+1;
+//	    	$last_class = '';
+//	    	if($columns > 1 && ($item_index%$columns) == 0)
+//	    	{
+//		    	$last_class = 'last';
+//	    	}
+//
+//			$return_html.= '<div class="'.$wrapper_class.' '.$last_class.'">';
+//
+//			//Display Food Menu
+//			$menu_ID = $menu_item->ID;
+//			$menu_price = get_post_meta($menu_ID, 'menu_price');
+//			$menu_price_currency = get_post_meta($menu_ID, 'menu_price_currency');
+//			if(!isset($menu_price_currency[0]))
+//			{
+//			    $menu_price_currency[0] = '$';
+//			}
+//			$menu_highlight = get_post_meta($menu_ID, 'menu_highlight');
+//			$menu_dots_class = 'menu_dots';
+//
+//			$return_html.= '
+//			    <div id="menu_'.esc_attr($menu_ID).'" class="menu_content_classic">';
+//
+//
+//			if(!empty($menu_image) && has_post_thumbnail($menu_item->ID, 'thumbnail'))
+//			{
+//			    $image_id = get_post_thumbnail_id($menu_item->ID);
+//			    $image_thumb = wp_get_attachment_image_src($image_id, 'thumbnail', true);
+//			    $image_full = wp_get_attachment_image_src($image_id, 'original', true);
+//
+//			    if(isset($image_thumb[0]) && !empty($image_thumb[0]))
+//			    {
+//			    	$return_html.= '<div class="menu_image"><a href="'.$image_full[0].'" class="img_frame"><img src="'.$image_thumb[0].'" alt=""/></a></div>';
+//			    	$menu_dots_class.= ' image';
+//			    }
+//			}
+//
+//		    $return_html.= '<h5 class="menu_post">
+//		        	<span class="menu_title">'.$menu_item->post_title.'</span>
+//		        	<span class="'.$menu_dots_class.'"></span>';
+//
+//		    if(isset($menu_price[0]))
+//		    {
+//		        	$return_html.= '<span class="menu_price">'.$menu_price_currency[0].$menu_price[0].'</span>';
+//		    }
+//
+//		    $return_html.= '</h5>
+//		        <div class="post_detail menu_excerpt">'.$menu_item->post_excerpt.'</div>';
+//
+//		    if(!empty($menu_highlight))
+//		    {
+//                $return_html.= '<div class="menu_highlight"><i class="fa fa-star"></i></div>';
+//            }
+//                $return_html.= '</div>
+//			';
+//
+//			$return_html.= '</div>';
+//		}
 	}
 	
 	if(!empty($width))
@@ -1129,14 +1101,14 @@ function ppb_menu_grid_func($atts, $content) {
 	    'numberposts' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
-	    'post_type' => array('menus'),
+	    'post_type' => 'product',
 	);
 	
 	if(!empty($cat))
 	{
-		$args['menucats'] = $cat;
+		$args['category'] = $cat;
 	}
-	$menu_arr = get_posts($args);
+	$menu_arr = new WP_Query( $args );
 	
 	$sec_id = '';
 	if(!empty($slug))
@@ -1158,91 +1130,69 @@ function ppb_menu_grid_func($atts, $content) {
 	
 	$return_html.='<div class="page_content_wrapper fullwidth">';
 	
-	if(!empty($menu_arr) && is_array($menu_arr))
+	if($menu_arr->have_posts())
 	{
 		$return_html.= '<div class="portfolio_filter_wrapper four_cols gallery portfolio-content section content clearfix">';
-	
-		foreach($menu_arr as $key => $menu_item)
-		{
+		$key = 0;
+		while ( $menu_arr->have_posts() ) : $menu_arr->the_post();
+			global $product;
 			$item_index = $key+1;
 			$last_class = '';
 			if($item_index%4 == 0)
 			{
 				$last_class = 'last';
 			}
-			
-			//Display Food Menu
-			$menu_ID = $menu_item->ID;
-			$menu_price = get_post_meta($menu_ID, 'menu_price');
-			$menu_price_currency = get_post_meta($menu_ID, 'menu_price_currency');
-			if(!isset($menu_price_currency[0]))
-			{
-			    $menu_price_currency[0] = '$';
-			}
-			$menu_highlight = get_post_meta($menu_ID, 'menu_highlight');
 			$menu_dots_class = 'menu_dots';
-			
+
 			//Begin display HTML
 			$return_html.= '<div class="element classic3_cols">';
 			$return_html.= '<div class="one_fourth gallery4 filterable static animated'.($key+1).'">';
-			
 			//Get food menu image
-			 $image_id = get_post_thumbnail_id($menu_item->ID);
-			 $image_thumb = wp_get_attachment_image_src($image_id, 'tg_grid', true);
-			 $image_full = wp_get_attachment_image_src($image_id, 'original', true);
-			
+			$image_id = get_post_thumbnail_id(get_the_ID());
+			$image_thumb = wp_get_attachment_image_src($image_id, 'tg_grid', true);
+			$image_full = wp_get_attachment_image_src($image_id, 'original', true);
+
 			if(!empty($image_thumb[0]))
 			{
 				//Get image caption
 				$image_caption = get_post_field('post_excerpt', $image_id);
 				$tg_lightbox_enable_caption = kirki_get_option('tg_lightbox_enable_caption');
-			
-				$return_html.= '<a data-title="'.esc_attr($menu_item->post_title).'" href="'.esc_url($image_full[0]).'" class="fancy-gallery" ';
-				
-				if(!empty($tg_lightbox_enable_caption)) 
+
+				$return_html.= '<a data-title="'.esc_attr(get_the_title()).'" href="'.esc_url($image_full[0]).'" class="fancy-gallery" ';
+
+				if(!empty($tg_lightbox_enable_caption))
 				{
 					$return_html.= 'title="'.esc_attr($image_caption).'" ';
 				}
-				
+
 				$return_html.= '><img src="'.esc_url($image_thumb[0]).'" alt=""/></a>';
 			}
 			$return_html.= '</div>';
-			
+
 			//Display portfolio detail
-			$return_html.= '<br class="clear"/><div id="portfolio_desc_'.$menu_ID.'" class="portfolio_desc portfolio4 filterable '.$last_class.'">';
-			
+			$return_html.= '<br class="clear"/><div id="portfolio_desc_'.get_the_ID().'" class="portfolio_desc portfolio4 filterable '.$last_class.'">';
+
 			$return_html.= '
-			    <div id="menu_'.esc_attr($menu_ID).'" class="menu_content_classic">';
-            
-            $return_html.= '<h5 class="menu_post">
-		        	<span class="menu_title">'.$menu_item->post_title.'</span>
+			    <div id="menu_'.esc_attr(get_the_ID()).'" class="menu_content_classic">';
+
+			$return_html.= '<h5 class="menu_post">
+		        	<span class="menu_title">'.get_the_title().'</span>
 		        	<span class="'.$menu_dots_class.'"></span>';
-		        	
-		    if(isset($menu_price[0]))
-		    {
-		        	$return_html.= '<span class="menu_price">'.$menu_price_currency[0].$menu_price[0].'</span>';
-		    }
-		    
-		    $return_html.= '</h5>
-		        <div class="post_detail menu_excerpt">'.$menu_item->post_excerpt.'</div>';
-		        
-		    if(!empty($menu_highlight))
-		    {
-                $return_html.= '<div class="menu_highlight"><i class="fa fa-star"></i></div>';
-            }
-            
+
+			$return_html.= '<span class="menu_price">'.$product->get_price_html().'</span>';
 			$return_html.= '</div>';
-			
+
 			$return_html.= '</div>';
-			
+
 			$return_html.= '</div>';
-		}
-		
+		endwhile;
+
 		$return_html.= '</div>';
+		wp_reset_query();
+
 	}
 	
 	$return_html.= '</div></div>';
-	
 	return $return_html;
 }
 
@@ -1272,12 +1222,12 @@ function ppb_menu_grid_image_func($atts, $content) {
 	    'numberposts' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
-	    'post_type' => array('menus'),
+	    'post_type' => 'product',
 	);
 	
 	if(!empty($cat))
 	{
-		$args['menucats'] = $cat;
+		$args['category'] = $cat;
 	}
 	$menu_arr = get_posts($args);
 	
@@ -3157,12 +3107,12 @@ function ppb_menu_slider_func($atts, $content) {
 	    'numberposts' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
-	    'post_type' => array('menus'),
+	    'post_type' => 'product',
 	);
 	
 	if(!empty($cat))
 	{
-		$args['menucats'] = $cat;
+		$args['category'] = $cat;
 	}
 	$menu_arr = get_posts($args);
 	
