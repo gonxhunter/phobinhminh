@@ -44,6 +44,14 @@
 
 /* General style */
 
+.woocommerce #page_content_wrapper a.button:before,
+.woocommerce .products a.button:before,
+.woocommerce-page #page_content_wrapper a.button:before,
+.woocommerce-page .products a.button:before {
+  position: static;
+  margin-left: 0;
+}
+
 @media only screen and (max-width: 767px) {
   #page_content_wrapper {
     padding: 0 20px;
@@ -136,4 +144,23 @@
   .single-product #review_form #respond p.form-submit {
     margin-top: 10px;
   }
+}
+
+/* Cart checkout page styling */
+
+.woocommerce table.cart td.actions .coupon .input-text#coupon_code {
+  padding: 10px;
+}
+
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td,
+.woocommerce-page table.shop_table th,
+.woocommerce-page table.shop_table td {
+  padding: 5px;
+}
+
+#add_payment_method .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-checkout .wc-proceed-to-checkout a.checkout-button {
+  padding: 10px;
 }

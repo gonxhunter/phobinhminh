@@ -1,5 +1,18 @@
 /* General style */
 
+.woocommerce,
+.woocommerce-page {
+    #page_content_wrapper,
+    .products {
+        a.button {
+            &:before {
+                position: static;
+                margin-left: 0;
+            }
+        }
+    }
+}
+
 @include bp(max-width, $tablet - 1) {
     #page_content_wrapper {
         padding: 0 20px;

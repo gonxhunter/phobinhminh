@@ -1,0 +1,38 @@
+/* Cart checkout page styling */
+
+.woocommerce {
+    table {
+        &.cart {
+            td.actions {
+                .coupon {
+                    .input-text {
+                        &#coupon_code {
+                            padding: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.woocommerce,
+.woocommerce-page {
+    table {
+        &.shop_table {
+            th, td {
+                padding: 5px;
+            }
+        }
+    }
+}
+
+#add_payment_method,
+.woocommerce-cart,
+.woocommerce-checkout {
+    .wc-proceed-to-checkout {
+        a.checkout-button {
+            padding: 10px;
+        }
+    }
+}
