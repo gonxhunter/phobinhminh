@@ -1,0 +1,8 @@
+/* Header style */
+
+@include bp(max-width, $tablet -1) {
+    #mobile_nav_icon {
+        display: inline-block !important;
+        vertical-align: top;
+    }
+}

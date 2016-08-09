@@ -10,9 +10,11 @@
 @import "variable";
 
 /* Global */
-
+@import "global/general";
 
 /* Component */
+@import "component/header";
 
 
 /* Pages */
+@import "page/product-detail";

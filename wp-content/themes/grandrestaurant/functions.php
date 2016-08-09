@@ -943,4 +943,16 @@ if (isset($_GET['activated']) && $_GET['activated']){
 
 	wp_redirect(admin_url("admin.php?page=admin.lib.php&activate=true#pp_panel_demo-content"));
 }
+
+/**
+ * Enqueue js css
+ */
+add_action( 'wp_enqueue_scripts','custom_style_scripts' );
+
+function custom_style_scripts() {
+    /*============ Styles ============ */
+    wp_enqueue_style( 'custom-style',   get_template_directory_uri() . '/css/style.css');
+    /*============ Javascripts ============ */
+}
+
 ?>
