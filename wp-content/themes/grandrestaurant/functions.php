@@ -945,14 +945,14 @@ if (isset($_GET['activated']) && $_GET['activated']){
 }
 
 /**
- * Enqueue js css
+ * Enqueue js css custom files
  */
-add_action( 'wp_enqueue_scripts','custom_style_scripts' );
 
-function custom_style_scripts() {
-    /*============ Styles ============ */
-    wp_enqueue_style( 'custom-style',   get_template_directory_uri() . '/css/style.css');
-    /*============ Javascripts ============ */
-}
+//function custom_style_scripts() {
+//    /*============ Styles ============ */
+//    wp_enqueue_style( 'custom-style',   get_template_directory_uri() . '/css/style.css');
+//    /*============ Javascripts ============ */
+//}
+//add_action( 'wp_enqueue_scripts','custom_style_scripts' );
 
 ?>

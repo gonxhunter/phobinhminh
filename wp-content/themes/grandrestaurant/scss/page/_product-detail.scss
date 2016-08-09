@@ -1,1 +1,112 @@
 /* Product detail style */
+
+.single-product {
+    .quantity {
+        input {
+            &.qty {
+                height: auto;
+                padding: 14px 0;
+                vertical-align: top;
+            }
+        }
+    }
+    div.product {
+        form {
+            &.cart {
+                .button {
+                    padding: 12px !important;
+                }
+            }
+        }
+    }
+    #commentform {
+        label {
+            display: block;
+            margin-bottom: 0;
+        }
+        input, textarea {
+            margin-bottom: 0;
+        }
+    }
+    #review_form {
+        #respond {
+            p {
+                margin: 0;
+                &.form-submit {
+                    float: left;
+                    margin-top: 23px;
+                }
+            }
+            input#submit {
+                padding: 12px;
+            }
+        }
+    }
+    .related {
+        &.products {
+            h2 {
+                font-size: 20px;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @include bp(max-width, $tablet - 1) {
+        div.product {
+            div.images,
+            div.summary {
+                width: 100%;
+                margin-right: 0;
+            }
+            .woocommerce-tabs {
+                ul.tabs {
+                    li {
+                        padding: 0;
+                        a {
+                            padding: 10px 10px 9px 10px !important;
+                        }
+                    }
+                }
+                .panel {
+                    padding: 10px;
+                }
+            }
+        }
+        #page_content_wrapper {
+            .inner {
+                .sidebar_content {
+                    #commentform {
+                        p {
+                            &.comment-form-author,
+                            &.comment-form-email,
+                            &.comment-form-url {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #reviews {
+            #comments {
+                ol.commentlist {
+                    li {
+                        .comment-text {
+                            p.meta {
+                                float: left;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #review_form {
+            #respond {
+                p.form-submit {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

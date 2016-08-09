@@ -892,6 +892,8 @@ function register_mobile_css() {
 		{
 	    	wp_enqueue_style('responsive', get_template_directory_uri()."/css/grid.css", false, "", "all");
 	    }
+        // Enqueue js css custom files
+        wp_enqueue_style( 'custom-style',   get_template_directory_uri() . '/css/style.css');
 	}
 }
 add_action('wp_enqueue_scripts', 'register_mobile_css', 15);
