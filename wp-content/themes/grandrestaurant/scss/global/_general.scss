@@ -13,6 +13,12 @@
     }
 }
 
+#page_caption {
+    .page_title_wrapper {
+        width: 960px;
+    }
+}
+
 @include bp(max-width, $tablet - 1) {
     #page_content_wrapper {
         padding: 0 20px;

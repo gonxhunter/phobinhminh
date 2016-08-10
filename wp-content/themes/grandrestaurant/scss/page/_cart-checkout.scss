@@ -14,6 +14,21 @@
             }
         }
     }
+
+    @include bp(max-width, $tablet - 1) {
+        table {
+            &.cart {
+                td.actions {
+                    .coupon {
+                        .button {
+                            font-size: 11px;
+                            padding: 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .woocommerce,

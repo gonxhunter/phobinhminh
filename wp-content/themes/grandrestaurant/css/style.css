@@ -52,6 +52,10 @@
   margin-left: 0;
 }
 
+#page_caption .page_title_wrapper {
+  width: 960px;
+}
+
 @media only screen and (max-width: 767px) {
   #page_content_wrapper {
     padding: 0 20px;
@@ -150,6 +154,13 @@
 
 .woocommerce table.cart td.actions .coupon .input-text#coupon_code {
   padding: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .woocommerce table.cart td.actions .coupon .button {
+    font-size: 11px;
+    padding: 11px;
+  }
 }
 
 .woocommerce table.shop_table th,
