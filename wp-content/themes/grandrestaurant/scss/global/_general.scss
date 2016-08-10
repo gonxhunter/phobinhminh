@@ -19,6 +19,11 @@
     }
 }
 
+.select2-drop {
+    @include border-radius(0);
+    border-color: $input-border;
+}
+
 @include bp(max-width, $tablet - 1) {
     #page_content_wrapper {
         padding: 0 20px;

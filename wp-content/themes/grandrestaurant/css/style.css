@@ -56,6 +56,13 @@
   width: 960px;
 }
 
+.select2-drop {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border-color: #e1e1e1;
+}
+
 @media only screen and (max-width: 767px) {
   #page_content_wrapper {
     padding: 0 20px;
@@ -156,6 +163,33 @@
   padding: 10px;
 }
 
+.woocommerce form .form-row label {
+  margin-bottom: 0;
+}
+
+.woocommerce form .form-row input.input-text {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  font-size: 100%;
+  padding: 13px 10px;
+  -webkit-transition: border-color 0.3s linear;
+  -moz-transition: border-color 0.3s linear;
+  -o-transition: border-color 0.3s linear;
+  transition: border-color 0.3s linear;
+}
+
+.woocommerce form .form-row textarea {
+  height: 225px;
+}
+
+.woocommerce form .form-row .select2-container .select2-choice {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border-color: #e1e1e1;
+  padding: 7px 10px;
+}
+
 @media only screen and (max-width: 767px) {
   .woocommerce table.cart td.actions .coupon .button {
     font-size: 11px;
@@ -170,8 +204,43 @@
   padding: 5px;
 }
 
+.woocommerce table.woocommerce-checkout-review-order-table th,
+.woocommerce table.woocommerce-checkout-review-order-table td,
+.woocommerce-page table.woocommerce-checkout-review-order-table th,
+.woocommerce-page table.woocommerce-checkout-review-order-table td {
+  border-bottom: none;
+}
+
 #add_payment_method .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button {
   padding: 10px;
+}
+
+#add_payment_method #payment,
+.woocommerce-cart #payment,
+.woocommerce-checkout #payment {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+#add_payment_method #payment ul.payment_methods,
+.woocommerce-cart #payment ul.payment_methods,
+.woocommerce-checkout #payment ul.payment_methods {
+  margin-left: 0;
+}
+
+#add_payment_method #payment div.payment_box,
+.woocommerce-cart #payment div.payment_box,
+.woocommerce-checkout #payment div.payment_box {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+#add_payment_method #payment div.payment_box:before,
+.woocommerce-cart #payment div.payment_box:before,
+.woocommerce-checkout #payment div.payment_box:before {
+  border-bottom-color: #ffffff;
 }

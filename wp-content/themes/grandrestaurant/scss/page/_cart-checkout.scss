@@ -14,6 +14,32 @@
             }
         }
     }
+    form {
+        .form-row {
+            label {
+                margin-bottom: 0;
+            }
+            input {
+                &.input-text {
+                    background: $white;
+                    border: 1px solid $input-border;
+                    font-size: 100%;
+                    padding: 13px 10px;
+                    @include transition(border-color 0.3s linear);
+                }
+            }
+            textarea {
+                height: 225px;
+            }
+            .select2-container {
+                .select2-choice {
+                    @include border-radius(0);
+                    border-color: $input-border;
+                    padding: 7px 10px;
+                }
+            }
+        }
+    }
 
     @include bp(max-width, $tablet - 1) {
         table {
@@ -39,6 +65,11 @@
                 padding: 5px;
             }
         }
+        &.woocommerce-checkout-review-order-table {
+            th, td {
+                border-bottom: none;
+            }
+        }
     }
 }
 
@@ -48,6 +79,18 @@
     .wc-proceed-to-checkout {
         a.checkout-button {
             padding: 10px;
+        }
+    }
+    #payment {
+        @include border-radius(0);
+        ul.payment_methods {
+            margin-left: 0;
+        }
+        div.payment_box {
+            @include border-radius(0);
+            &:before {
+                border-bottom-color: $white;
+            }
         }
     }
 }
