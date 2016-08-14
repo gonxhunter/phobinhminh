@@ -20,6 +20,14 @@
         }
     }
     #commentform {
+        margin: 0;
+        > p {
+            padding-left: 0;
+            &.comment-form-email,
+            &.form-submit {
+                padding-left: 24px;
+            }
+        }
         label {
             display: block;
             margin-bottom: 0;
@@ -38,15 +46,30 @@
                 }
             }
             input#submit {
+                @include border-radius(0);
                 padding: 12px;
             }
         }
+    }
+    .wp-social-login-provider-list {
+        padding: 10px 0;
     }
     .related {
         &.products {
             h2 {
                 font-size: 20px;
                 margin-bottom: 0;
+            }
+        }
+    }
+
+    @include bp(max-width, $laptop - 32) {
+        #commentform {
+            > p {
+                &.comment-form-email,
+                &.form-submit {
+                    padding-left: 0;
+                }
             }
         }
     }

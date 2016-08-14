@@ -94,6 +94,19 @@
   padding: 12px !important;
 }
 
+.single-product #commentform {
+  margin: 0;
+}
+
+.single-product #commentform > p {
+  padding-left: 0;
+}
+
+.single-product #commentform > p.comment-form-email,
+.single-product #commentform > p.form-submit {
+  padding-left: 24px;
+}
+
 .single-product #commentform label {
   display: block;
   margin-bottom: 0;
@@ -114,12 +127,26 @@
 }
 
 .single-product #review_form #respond input#submit {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   padding: 12px;
+}
+
+.single-product .wp-social-login-provider-list {
+  padding: 10px 0;
 }
 
 .single-product .related.products h2 {
   font-size: 20px;
   margin-bottom: 0;
+}
+
+@media only screen and (max-width: 960px) {
+  .single-product #commentform > p.comment-form-email,
+  .single-product #commentform > p.form-submit {
+    padding-left: 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {
