@@ -10,12 +10,16 @@
                             padding: 10px;
                         }
                     }
+                    .button {
+                        @include border-radius(0);
+                    }
                 }
             }
         }
     }
     form {
         .form-row {
+            padding: 0;
             label {
                 margin-bottom: 0;
             }
@@ -39,6 +43,16 @@
                 }
             }
         }
+        &.login,
+        &.register,
+        &.checkout_coupon {
+            @include border-radius(0);
+            padding: 10px;
+            .button {
+                @include border-radius(0);
+                padding: 12px;
+            }
+        }
     }
 
     @include bp(max-width, $tablet - 1) {
@@ -51,6 +65,18 @@
                             padding: 11px;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @include bp(max-width, $mobile - 1) {
+        form {
+            &.checkout_coupon {
+                .form-row-first,
+                .form-row-last {
+                    float: none;
+                    width: 100%;
                 }
             }
         }
