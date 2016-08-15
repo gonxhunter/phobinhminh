@@ -33,8 +33,25 @@ input[type="radio"] {
     border-color: $input-border;
 }
 
+.menu_image {
+    @include border-radius(50%);
+    @include transform(translateY(-20px));
+}
+
 @include bp(max-width, $tablet - 1) {
-    #page_content_wrapper {
+    #page_content_wrapper,
+    .standard_wrapper {
         padding: 0 20px;
+    }
+    .menu_content_classic {
+        margin: 15px 0 0;
+    }
+    .menu_image {
+        display: none;
+    }
+    .one_half, .one_half.last,
+    .one_third, .one_third.last,
+    .one_third.pricing, .one_fourth.pricing {
+        margin: 0;
     }
 }
