@@ -281,9 +281,6 @@ elseif(is_home())
 		    	<!-- End Reservation -->
 		    	
 		    	<?php
-		    	if (class_exists('Woocommerce') && tg_is_woocommerce_page()) {
-		    	    //Check if display cart in header
-		
 		    	    global $woocommerce;
 		    	    $cart_url = $woocommerce->cart->get_cart_url();
 		    	    $cart_count = $woocommerce->cart->cart_contents_count;
@@ -292,9 +289,7 @@ elseif(is_home())
 		    		<div class="cart_count"><?php echo esc_html($cart_count); ?></div>
 		    	    <a href="<?php echo esc_url($cart_url); ?>"><i class="fa fa-shopping-cart"></i></a>
 		    	</div>
-		    	<?php
-		    	}
-		    	?>
+
 	        
 		        <!-- Begin side menu -->
 		    	<a href="javascript:;" id="mobile_nav_icon"></a>

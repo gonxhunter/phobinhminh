@@ -955,4 +955,38 @@ if (isset($_GET['activated']) && $_GET['activated']){
 //}
 //add_action( 'wp_enqueue_scripts','custom_style_scripts' );
 
+function ajax_login_init(){
+	global $woocommerce;
+	wp_register_script('ajax-login-script', get_template_directory_uri() . '/js/ajax-login-script.js', array('jquery'), '3.1.1', true );
+	wp_enqueue_script('ajax-login-script');
+
+	wp_localize_script( 'ajax-login-script', 'ajax_login_object', array(
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'redirecturl' => $woocommerce->cart->get_cart_url(),
+		'loadingmessage' => __('Sending user info, please wait...')
+	));
+
+	add_action( 'wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
+}
+if (!is_user_logged_in()) {
+	add_action('init', 'ajax_login_init');
+}
+
+function ajax_login(){
+
+	check_ajax_referer( 'ajax-login-nonce', 'security' );
+	$info = array();
+	$info['user_login'] = $_POST['username'];
+	$info['user_password'] = $_POST['password'];
+	$info['remember'] = $_POST['remember'];
+
+	$user_signon = wp_signon( $info, false );
+	if ( is_wp_error($user_signon) ){
+		echo json_encode(array('loggedin'=>false, 'message'=>__('Wrong username or password.')));
+	} else {
+		echo json_encode(array('loggedin'=>true, 'message'=>__('Login successful, redirecting...')));
+	}
+
+	die();
+}
 ?>
