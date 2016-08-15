@@ -10,12 +10,16 @@
                             padding: 10px;
                         }
                     }
+                    .button {
+                        @include border-radius(0);
+                    }
                 }
             }
         }
     }
     form {
         .form-row {
+            padding: 0;
             label {
                 margin-bottom: 0;
             }
@@ -39,6 +43,16 @@
                 }
             }
         }
+        &.login,
+        &.register,
+        &.checkout_coupon {
+            @include border-radius(0);
+            padding: 10px;
+            .button {
+                @include border-radius(0);
+                padding: 12px;
+            }
+        }
     }
 
     @include bp(max-width, $tablet - 1) {
@@ -55,6 +69,18 @@
             }
         }
     }
+
+    @include bp(max-width, $mobile - 1) {
+        form {
+            &.checkout_coupon {
+                .form-row-first,
+                .form-row-last {
+                    float: none;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 .woocommerce,
@@ -65,7 +91,8 @@
                 padding: 5px;
             }
         }
-        &.woocommerce-checkout-review-order-table {
+        &.woocommerce-checkout-review-order-table,
+        &.order_details {
             th, td {
                 border-bottom: none;
             }
@@ -90,6 +117,33 @@
             @include border-radius(0);
             &:before {
                 border-bottom-color: $white;
+            }
+        }
+    }
+}
+
+.woocommerce-order-received {
+    #page_content_wrapper {
+        .inner {
+            .sidebar_content {
+                .order_details {
+                    margin: 0;
+                    li {
+                        line-height: 1.5;
+                    }
+                }
+
+                @include bp(max-width, $tablet - 1) {
+                    .order_details {
+                        li {
+                            border-right: none;
+                            border-bottom: 1px dashed $order-detail-border;
+                            float: none;
+                            margin: 0;
+                            padding: 5px 0;
+                        }
+                    }
+                }
             }
         }
     }
