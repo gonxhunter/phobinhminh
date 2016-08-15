@@ -48,6 +48,11 @@ body {
   line-height: 1.5;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+  outline: none;
+}
+
 .woocommerce #page_content_wrapper a.button:before,
 .woocommerce .products a.button:before,
 .woocommerce-page #page_content_wrapper a.button:before,
@@ -190,6 +195,22 @@ body {
 
 /* Cart checkout page styling */
 
+.woocommerce .woocommerce-error,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-message {
+  border-top: none;
+  padding: 10px 10px 10px 35px !important;
+}
+
+.woocommerce .woocommerce-error:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-message:before {
+  vertical-align: middle;
+  top: 50% !important;
+  left: 10px;
+  margin-top: -7px;
+}
+
 .woocommerce table.cart td.actions .coupon .input-text#coupon_code {
   padding: 10px;
 }
@@ -291,6 +312,7 @@ body {
 #add_payment_method #payment,
 .woocommerce-cart #payment,
 .woocommerce-checkout #payment {
+  background: #ffffff;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -305,6 +327,7 @@ body {
 #add_payment_method #payment div.payment_box,
 .woocommerce-cart #payment div.payment_box,
 .woocommerce-checkout #payment div.payment_box {
+  background: #e1e1e1 !important;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -313,7 +336,7 @@ body {
 #add_payment_method #payment div.payment_box:before,
 .woocommerce-cart #payment div.payment_box:before,
 .woocommerce-checkout #payment div.payment_box:before {
-  border-bottom-color: #ffffff;
+  border-bottom-color: #e1e1e1;
 }
 
 .woocommerce-order-received #page_content_wrapper .inner .sidebar_content .order_details {
