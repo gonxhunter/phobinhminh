@@ -59,7 +59,7 @@
         &.register,
         &.checkout_coupon {
             @include border-radius(0);
-            padding: 10px;
+            margin: 20px 0;
             .button {
                 @include border-radius(0);
                 padding: 12px;

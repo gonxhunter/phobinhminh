@@ -9,18 +9,21 @@ jQuery(document).ready(function() {
         if(!jQuery(this).hasClass('active'))
         {
             jQuery('.menu .toggle').trigger('click');
-            jQuery('body').prepend('<div class="login_overlay"></div>');
+            jQuery('body').prepend('<div class="login-overlay"></div>');
+            jQuery('body').css('overflow-y', 'hidden');
             jQuery(this).addClass('active');
-            jQuery('form#login').toggle(500);
-            jQuery('div.login_overlay').click(function() {
-                jQuery('div.login_overlay').remove();
-                jQuery('form#login').hide();
+            jQuery('form#login').fadeIn(300);
+            jQuery('div.login-overlay').click(function() {
+                jQuery('div.login-overlay').remove();
+                jQuery('body').removeAttr('style');
+                jQuery('form#login').fadeOut(300);
                 jQuery(this).removeClass('active');
             })
         }
         else {
-            jQuery('div.login_overlay').remove();
-            jQuery('form#login').hide();
+            jQuery('div.login-overlay').remove();
+            jQuery('body').removeAttr('style');
+            jQuery('form#login').fadeOut(300);
             jQuery(this).removeClass('active');
         }
     });
