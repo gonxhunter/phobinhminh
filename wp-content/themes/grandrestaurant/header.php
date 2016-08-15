@@ -408,7 +408,36 @@ if(is_single())
 			get_template_part("/templates/template-topmenu");
 		}
 	?>
-	
+		<form id="login" action="login" method="post" style="display: none">
+
+			<p><span
+					class="txt-italic"><?php echo __('Be a member to download our full catalog and receive latest news and promotions') ?></span>
+			</p>
+
+			<div class="form-group">
+				<input id="username" type="text" name="username"
+					   placeholder="<?php echo __('Username','sutunam') ?>">
+			</div>
+			<div class="form-group">
+				<input id="password" type="password" name="password"
+					   placeholder="<?php echo __('Password','sutunam') ?>">
+			</div>
+			<div class="checkbox">
+				<input id="remember" type="checkbox"
+					   name="remember"><span
+					class="txt"><?php echo __('Keep me logged in','sutunam'); ?></span>
+			</div>
+			<input class="submit_button" type="submit" value="<?php echo __('Log in','sutunam') ?>"
+				   name="submit">
+
+			<div class="form-action">
+				<a class="txt sign-up"
+				   href="<?php echo get_site_url() . __('/my-account') ?>"><?php echo __('Not a member yet? Sign up here','sutunam') ?></a>
+			</div>
+			<p class="status"></p>
+			<?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
+			<?php echo do_shortcode("[wordpress_social_login]");?>
+		</form>
 	<?php
 	    //Check if theme demo then enable layout switcher
 	    if(THEMEDEMO)
