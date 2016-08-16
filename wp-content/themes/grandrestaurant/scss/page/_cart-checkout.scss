@@ -132,6 +132,33 @@
             &:before {
                 border-bottom-color: $input-border;
             }
+            .form-row {
+                margin: 0;
+                label {
+                    font-weight: normal;
+                    text-transform: none;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+    }
+
+    @include bp(max-width, $tablet - 1) {
+        #payment {
+            div.payment_box {
+                .form-row-first,
+                .form-row-last {
+                    width: 100%;
+                }
+            }
+            .payment_method_paypal {
+                label {
+                    img, a {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 }

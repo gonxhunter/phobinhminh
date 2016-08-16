@@ -467,6 +467,40 @@ form#login .wp-social-login-widget {
   border-bottom-color: #e1e1e1;
 }
 
+#add_payment_method #payment div.payment_box .form-row,
+.woocommerce-cart #payment div.payment_box .form-row,
+.woocommerce-checkout #payment div.payment_box .form-row {
+  margin: 0;
+}
+
+#add_payment_method #payment div.payment_box .form-row label,
+.woocommerce-cart #payment div.payment_box .form-row label,
+.woocommerce-checkout #payment div.payment_box .form-row label {
+  font-weight: normal;
+  text-transform: none;
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+  #add_payment_method #payment div.payment_box .form-row-first,
+  #add_payment_method #payment div.payment_box .form-row-last,
+  .woocommerce-cart #payment div.payment_box .form-row-first,
+  .woocommerce-cart #payment div.payment_box .form-row-last,
+  .woocommerce-checkout #payment div.payment_box .form-row-first,
+  .woocommerce-checkout #payment div.payment_box .form-row-last {
+    width: 100%;
+  }
+
+  #add_payment_method #payment .payment_method_paypal label img,
+  #add_payment_method #payment .payment_method_paypal label a,
+  .woocommerce-cart #payment .payment_method_paypal label img,
+  .woocommerce-cart #payment .payment_method_paypal label a,
+  .woocommerce-checkout #payment .payment_method_paypal label img,
+  .woocommerce-checkout #payment .payment_method_paypal label a {
+    display: none;
+  }
+}
+
 .woocommerce-order-received #page_content_wrapper .inner .sidebar_content .order_details {
   margin: 0;
 }
