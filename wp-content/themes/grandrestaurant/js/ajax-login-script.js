@@ -28,6 +28,30 @@ jQuery(document).ready(function() {
         }
     });
 
+    jQuery('.woocommerce-message .button').on('click', function(e){
+        e.preventDefault();
+        if(!jQuery(this).hasClass('active'))
+        {
+            jQuery('.menu .toggle').trigger('click');
+            jQuery('body').prepend('<div class="login-overlay"></div>');
+            jQuery('body').css('overflow-y', 'hidden');
+            jQuery(this).addClass('active');
+            jQuery('form#login').fadeIn(300);
+            jQuery('div.login-overlay').click(function() {
+                jQuery('div.login-overlay').remove();
+                jQuery('body').removeAttr('style');
+                jQuery('form#login').fadeOut(300);
+                jQuery(this).removeClass('active');
+            })
+        }
+        else {
+            jQuery('div.login-overlay').remove();
+            jQuery('body').removeAttr('style');
+            jQuery('form#login').fadeOut(300);
+            jQuery(this).removeClass('active');
+        }
+    });
+
     // Perform AJAX login on form submit
     jQuery('form#login').on('submit', function(e){
         jQuery('form#login p.status').show().text(ajax_login_object.loadingmessage);
