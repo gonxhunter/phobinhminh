@@ -988,4 +988,42 @@ function ajax_login(){
 
 	die();
 }
+
+
+
+function your_add_to_cart_message($products, $show_qty = false) {
+	$titles = array();
+	$count  = 0;
+
+	if ( ! is_array( $products ) ) {
+		$products = array( $products );
+		$show_qty = false;
+	}
+
+	if ( ! $show_qty ) {
+		$products = array_fill_keys( array_keys( $products ), 1 );
+	}
+
+	foreach ( $products as $product_id => $qty ) {
+		$titles[] = ( $qty > 1 ? absint( $qty ) . ' &times; ' : '' ) . sprintf( _x( '&ldquo;%s&rdquo;', 'Item name in quotes', 'woocommerce' ), strip_tags( get_the_title( $product_id ) ) );
+		$count += $qty;
+	}
+
+	$titles     = array_filter( $titles );
+	$added_text = sprintf( _n( 'The product has been added to your cart.', 'The product have been added to your cart.', $count, 'woocommerce' ));
+
+	// Output success messages
+	if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
+		$return_to = apply_filters( 'woocommerce_continue_shopping_redirect', wc_get_raw_referer() ? wp_validate_redirect( wc_get_raw_referer(), false ) : wc_get_page_permalink( 'shop' ) );
+		$message   = sprintf( '<a href="%s" class="button wc-forward">%s</a> %s', esc_url( $return_to ), esc_html__( 'Continue Shopping', 'woocommerce' ), esc_html( $added_text ) );
+	} else {
+		if(is_user_logged_in()){
+			$message   = sprintf( '<a href="%s" class="button wc-forward">%s</a> %s', esc_url( wc_get_page_permalink( 'cart' ) ), esc_html__( 'View Cart', 'woocommerce' ), esc_html( $added_text ) );
+		}else{
+			$message   = sprintf( '<a href="%s" class="button wc-forward">%s</a> %s', esc_url( wc_get_page_permalink( 'my-account' ) ), esc_html__( 'View Cart', 'woocommerce' ), esc_html( $added_text ) );
+		}
+	}
+	return $message;
+}
+add_filter( 'wc_add_to_cart_message', 'your_add_to_cart_message' );
 ?>
