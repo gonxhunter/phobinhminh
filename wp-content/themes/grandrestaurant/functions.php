@@ -956,13 +956,12 @@ if (isset($_GET['activated']) && $_GET['activated']){
 //add_action( 'wp_enqueue_scripts','custom_style_scripts' );
 
 function ajax_login_init(){
-	global $woocommerce;
 	wp_register_script('ajax-login-script', get_template_directory_uri() . '/js/ajax-login-script.js', array('jquery'), '3.1.1', true );
 	wp_enqueue_script('ajax-login-script');
 
 	wp_localize_script( 'ajax-login-script', 'ajax_login_object', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		'redirecturl' => $woocommerce->cart->get_cart_url(),
+		'redirecturl' => get_site_url().'/cart',
 		'loadingmessage' => __('Sending user info, please wait...')
 	));
 
