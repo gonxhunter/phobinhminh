@@ -409,7 +409,7 @@ $tg_footer_sidebar = kirki_get_option('tg_footer_sidebar');
                    name="submit">
         </div>
         <div class="form-signup">
-            <a class="txt sign-up" href="<?php echo get_site_url() . __('/my-account') ?>"><?php echo __('Not a member yet? Sign up here', 'sutunam') ?></a>
+            <a class="txt sign-up" href="<?php echo get_site_url() . __('/my-account') ?>"><?php echo __('Sign up here', 'sutunam') ?></a>
         </div>
         <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
         <?php echo do_shortcode("[wordpress_social_login]"); ?>

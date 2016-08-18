@@ -8,9 +8,9 @@ form {
         left: 50%;
         top: 50%;
         width: 320px;
+        margin: -190px 0 0 -190px;
         padding: 30px;
         z-index: 222;
-        @include transform(translate(-50%, -50%));
         p {
             &.txt-italic {
                 margin-bottom: 20px;
@@ -29,18 +29,20 @@ form {
         }
         .checkbox {
             float: left;
+            width: 100%;
             margin-top: 10px;
             input {
                 margin-left: 0;
             }
         }
         .form-action {
-            float: right;
+            float: left;
             margin-top: 10px;
             .submit-button {
+                border: none;
                 font-size: 14px;
                 margin: 0;
-                padding: 10px;
+                padding: 12px 35px;
                 @include transition();
                 &:hover {
                     background: $black;
@@ -48,7 +50,19 @@ form {
             }
         }
         .form-signup {
-            float: left;
+            float: right;
+            margin-top: 10px;
+            .sign-up {
+                background: $signup-btn-bg;
+                display: block;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 12px 20px;
+                &:hover {
+                    background: $signup-btn-hover;
+                    color: $black;
+                }
+            }
         }
         .wp-social-login-widget {
             float: left;
@@ -60,6 +74,7 @@ form {
             height: 100%;
             width: auto;
             max-width: 100%;
+            margin: 0;
             padding: 20px;
             left: 0;
             top: 0;
