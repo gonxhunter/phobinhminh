@@ -531,3 +531,11 @@ form#login .wp-social-login-widget {
     padding: 5px 0;
   }
 }
+
+/* News page styling */
+
+.post_header.grid h6 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
