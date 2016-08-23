@@ -42,6 +42,13 @@ input[type="radio"] {
     @include transform(translateY(-20px));
 }
 
+.menu_content_classic {
+    .menu_title,
+    .menu_price {
+        top: -4px;
+    }
+}
+
 @include bp(max-width, $tablet - 1) {
     #page_content_wrapper,
     .standard_wrapper {
@@ -49,6 +56,16 @@ input[type="radio"] {
     }
     .menu_content_classic {
         margin: 15px 0 0;
+        .menu_title,
+        .menu_price {
+            top: 0;
+        }
+        .menu_title {
+            font-size: 13px;
+        }
+        .menu_price {
+            font-size: 14px;
+        }
     }
     .menu_image {
         display: none;
