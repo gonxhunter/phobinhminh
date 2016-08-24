@@ -669,11 +669,11 @@ function tg_map_func($atts) {
 	
 	if(!is_ssl())
 	{
-	    wp_enqueue_script("google_maps", "http://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	else
 	{
-	    wp_enqueue_script("google_maps", "https://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	
 	wp_enqueue_script("simplegmaps", get_template_directory_uri()."/js/jquery.simplegmaps.min.js", false, THEMEVERSION, true);
