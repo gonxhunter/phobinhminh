@@ -550,6 +550,70 @@ form#login .wp-social-login-widget {
   }
 }
 
+/* Account page styling */
+
+.woocommerce-account #page_content_wrapper .inner .sidebar_content ul {
+  margin: 0;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  width: 28%;
+  padding-right: 2%;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li a {
+  display: block;
+  line-height: normal;
+  padding: 10px 0;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a {
+  font-weight: bold;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li:last-child {
+  border: none;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info .button {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content input.button {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .woocommerce-account .woocommerce-MyAccount-navigation {
+    float: none;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .woocommerce-account .woocommerce-MyAccount-content form .form-row label {
+    line-height: normal;
+    margin-bottom: 5px;
+  }
+}
+
 /* News page styling */
 
 .post_header.grid h6 {
