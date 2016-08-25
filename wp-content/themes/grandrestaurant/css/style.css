@@ -354,22 +354,6 @@ form#login .wp-social-login-widget {
 
 /* Cart checkout page styling */
 
-.woocommerce .woocommerce-error,
-.woocommerce .woocommerce-info,
-.woocommerce .woocommerce-message {
-  border-top: none;
-  padding: 10px 10px 10px 35px !important;
-}
-
-.woocommerce .woocommerce-error:before,
-.woocommerce .woocommerce-info:before,
-.woocommerce .woocommerce-message:before {
-  vertical-align: middle;
-  top: 50% !important;
-  left: 10px;
-  margin-top: -7px;
-}
-
 .woocommerce table.cart td.actions .coupon .input-text#coupon_code {
   padding: 10px;
 }
@@ -442,6 +426,28 @@ form#login .wp-social-login-widget {
     float: none;
     width: 100%;
   }
+}
+
+.woocommerce .woocommerce-error,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-message,
+.woocommerce-page .woocommerce-error,
+.woocommerce-page .woocommerce-info,
+.woocommerce-page .woocommerce-message {
+  border-top: none;
+  padding: 10px 10px 10px 35px !important;
+}
+
+.woocommerce .woocommerce-error:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-message:before,
+.woocommerce-page .woocommerce-error:before,
+.woocommerce-page .woocommerce-info:before,
+.woocommerce-page .woocommerce-message:before {
+  vertical-align: middle;
+  top: 50% !important;
+  left: 10px;
+  margin-top: -7px;
 }
 
 .woocommerce table.shop_table th,
