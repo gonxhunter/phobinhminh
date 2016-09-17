@@ -596,7 +596,7 @@ function ppb_menu_with_image_func($atts, $content) {
 	
 	//Get food menu items
 	$args = array(
-	    'numberposts' => $items,
+	    'posts_per_page' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
 	    'post_type' => 'product',
@@ -604,7 +604,7 @@ function ppb_menu_with_image_func($atts, $content) {
 	
 	if(!empty($cat))
 	{
-		$args['category'] = $cat;
+		$args['product_cat'] = $cat;
 	}
 	$menu_arr = new WP_Query( $args );
 	
@@ -805,7 +805,7 @@ function ppb_menu_with_image_fullwidthe_func($atts, $content) {
 	
 	//Get food menu items
 	$args = array(
-	    'numberposts' => $items,
+	    'posts_per_page' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
 	    'post_type' => 'product',
@@ -813,7 +813,7 @@ function ppb_menu_with_image_fullwidthe_func($atts, $content) {
 	
 	if(!empty($cat))
 	{
-		$args['category'] = $cat;
+		$args['product_cat'] = $cat;
 	}
 	$menu_arr = new WP_Query( $args );
 	
@@ -902,7 +902,7 @@ function ppb_menu_classic_func($atts, $content) {
 	
 	//Get food menu items
 	$args = array(
-	    'numberposts' => $items,
+	    'posts_per_page' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
 	    'post_type' => 'product',
@@ -910,7 +910,7 @@ function ppb_menu_classic_func($atts, $content) {
 	
 	if(!empty($cat))
 	{
-		$args['category'] = $cat;
+		$args['product_cat'] = $cat;
 	}
 	$menu_arr = new WP_Query( $args );
 
@@ -1098,7 +1098,7 @@ function ppb_menu_grid_func($atts, $content) {
 	
 	//Get food menu items
 	$args = array(
-	    'numberposts' => $items,
+	    'posts_per_page' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
 	    'post_type' => 'product',
@@ -1106,7 +1106,7 @@ function ppb_menu_grid_func($atts, $content) {
 	
 	if(!empty($cat))
 	{
-		$args['category'] = $cat;
+		$args['product_cat'] = $cat;
 	}
 	$menu_arr = new WP_Query( $args );
 	
@@ -1219,7 +1219,7 @@ function ppb_menu_grid_image_func($atts, $content) {
 	
 	//Get food menu items
 	$args = array(
-	    'numberposts' => $items,
+	    'posts_per_page' => $items,
 	    'order' => 'ASC',
 	    'orderby' => 'menu_order',
 	    'post_type' => 'product',
@@ -1227,7 +1227,7 @@ function ppb_menu_grid_image_func($atts, $content) {
 	
 	if(!empty($cat))
 	{
-		$args['category'] = $cat;
+		$args['product_cat'] = $cat;
 	}
 	$menu_arr = get_posts($args);
 	
@@ -4961,11 +4961,11 @@ function ppb_contact_map_func($atts, $content) {
     
     if(!is_ssl())
 	{
-	    wp_enqueue_script("google_maps", "http://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	else
 	{
-	    wp_enqueue_script("google_maps", "https://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
     
     wp_enqueue_script("jquery.validate", get_template_directory_uri()."/js/jquery.validate.js", false, THEMEVERSION, true);
@@ -5816,11 +5816,11 @@ function ppb_map_func($atts) {
 	
 	if(!is_ssl())
 	{
-	    wp_enqueue_script("google_maps", "http://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	else
 	{
-	    wp_enqueue_script("google_maps", "https://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	
 	wp_enqueue_script("simplegmaps", get_template_directory_uri()."/js/jquery.simplegmaps.min.js", false, THEMEVERSION, true);
@@ -6070,11 +6070,11 @@ function ppb_map_content_func($atts, $content) {
 	
 	if(!is_ssl())
 	{
-	    wp_enqueue_script("google_maps", "http://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	else
 	{
-	    wp_enqueue_script("google_maps", "https://maps.google.com/maps/api/js?sensor=false", false, THEMEVERSION, true);
+	    wp_enqueue_script("google_maps", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCrHuPZAqWZaMTI0WcaK4xejHS7c5A2fgc", false, THEMEVERSION, true);
 	}
 	
 	wp_enqueue_script("simplegmaps", get_template_directory_uri()."/js/jquery.simplegmaps.min.js", false, THEMEVERSION, true);

@@ -1,0 +1,71 @@
+/* Account page styling */
+
+.woocommerce-account {
+    #page_content_wrapper {
+        .inner {
+            .sidebar_content {
+                ul {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .woocommerce-MyAccount-navigation {
+        width: 28%;
+        padding-right: 2%;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                border-bottom: 1px solid $input-border;
+                a {
+                    display: block;
+                    line-height: normal;
+                    padding: 10px 0;
+                }
+                &.is-active {
+                    a {
+                        font-weight: bold;
+                    }
+                }
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+    }
+    .woocommerce-MyAccount-content {
+        .woocommerce-info {
+            .button {
+                @include border-radius(0);
+                background: none;
+                padding: 0;
+            }
+        }
+        input.button {
+            @include border-radius(0);
+        }
+    }
+
+    @include bp(max-width, $tablet) {
+        .woocommerce-MyAccount-navigation {
+            float: none;
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    @include bp(max-width, $mobile) {
+        .woocommerce-MyAccount-content {
+            form {
+                .form-row {
+                    label {
+                        line-height: normal;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

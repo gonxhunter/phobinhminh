@@ -1,18 +1,6 @@
 /* Cart checkout page styling */
 
 .woocommerce {
-    .woocommerce-error,
-    .woocommerce-info,
-    .woocommerce-message {
-        border-top: none;
-        padding: 10px 10px 10px 35px !important;
-        &:before {
-            vertical-align: middle;
-            top: 50% !important;
-            left: 10px;
-            margin-top: -7px;
-        }
-    }
     table {
         &.cart {
             td.actions {
@@ -97,6 +85,18 @@
 
 .woocommerce,
 .woocommerce-page {
+    .woocommerce-error,
+    .woocommerce-info,
+    .woocommerce-message {
+        border-top: none;
+        padding: 10px 10px 10px 35px !important;
+        &:before {
+            vertical-align: middle;
+            top: 50% !important;
+            left: 10px;
+            margin-top: -7px;
+        }
+    }
     table {
         &.shop_table {
             th, td {

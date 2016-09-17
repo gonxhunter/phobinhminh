@@ -1,0 +1,24 @@
+/* News page styling */
+
+.post_header {
+    &.grid {
+        h6 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        @include bp(max-width, $laptop - 32) {
+            h6 {
+                overflow: visible;
+                white-space: normal;
+            }
+        }
+
+        @include bp(max-width, $tablet - 1) {
+            h6 {
+                line-height: normal;
+            }
+        }
+    }
+}
