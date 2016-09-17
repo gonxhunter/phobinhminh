@@ -98,7 +98,7 @@
 	<ul class="sidebar_widget <?php echo esc_attr($footer_class); ?>">
 	    <?php dynamic_sidebar('Footer Sidebar'); ?>
 	</ul>
-	</div>
+	<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=txlFU1Zg02z6h4MNhQcTMMwc9tOmpeFQAozm8I9AZuUAOlKnECbv3VdS2Dyj"></script></span>	</div>
 	<br class="clear"/>
 	<?php
 	    }

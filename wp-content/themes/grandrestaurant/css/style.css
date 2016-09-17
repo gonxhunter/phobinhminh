@@ -111,6 +111,14 @@ input[type="radio"] {
   }
 }
 
+/* Footer styling */
+
+#footer #siteseal {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
 /* Component */
 
 /* Header style */
